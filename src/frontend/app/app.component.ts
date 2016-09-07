@@ -1,6 +1,11 @@
 import { Component }                    from '@angular/core';
 import { Router }                       from '@angular/router';
 
+// Store initialization
+import { NgRedux, DevToolsExtension }        from 'ng2-redux';
+import { IAppState, rootReducer, enhancers } from './store/index';
+const createLogger = require('redux-logger');
+
 @Component({
     selector: 'app',
     template: require('./app.html')
@@ -9,17 +14,24 @@ import { Router }                       from '@angular/router';
 export class AppComponent  {
 
     public menu: Object[] = [
-        { name: 'Forms', icon: 'assignment ind', link: '/forms'},
-        { name: 'Buttons', icon: 'assignment ind', link: '/buttons'},
-        { name: 'Icons', icon: 'assignment ind', link: '/icons' },
-        { name: 'Grid', icon: 'assignment ind', link: '/grid'},
-        { name: 'Lists', icon: 'assignment ind', link: '/lists'},
-        { name: 'Tabs', icon: 'assignment ind', link: '/tabs'},
-        { name: 'Sliders', icon: 'assignment ind', link: '/sliders'},
-        { name: 'Spinners', icon: 'assignment ind', link: '/spinners'}
+        { name: 'Redux' , icon: 'assignment ind', link: '/redux'}  
     ];
 
-    constructor( private router: Router) {}
+    constructor( 
+        private router: Router, 
+        private ngRedux: NgRedux<IAppState>,
+        private devTool: DevToolsExtension) {
+            
+        
+            // Store configuration
+            this.ngRedux.configureStore(
+                rootReducer,
+                {},
+                [ createLogger() ],                                                 // Plugins
+                [ ...enhancers, devTool.isEnabled() ? devTool.enhancer() : f => f]  // Enhancers
+            );    
+        }
+
 
     public navigate( link: string) {
         this.router.navigate([link]);

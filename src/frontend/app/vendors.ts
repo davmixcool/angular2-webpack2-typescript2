@@ -31,8 +31,13 @@ import '@angular2-material/toolbar';
 import '@angular2-material/tooltip';
 
 
+
+
 // Hammer.js - needed by some of the Material modules
 import 'hammerjs/hammer.js';
+
+import 'redux';
+import 'redux-logger';
 
 if ( ENV === 'production') {
   // Production

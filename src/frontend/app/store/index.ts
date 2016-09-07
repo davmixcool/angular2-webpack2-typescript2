@@ -22,5 +22,5 @@ export const rootReducer = combineReducers<IAppState>({
 // Redux plugins configurations
 // Here we configure how local storage should be saved
 export const enhancers = [
-  persistState('counter', { key: 'redux-fucking-rocks' })
+  persistState('counter', { key: 'reduxrocks' })
 ];

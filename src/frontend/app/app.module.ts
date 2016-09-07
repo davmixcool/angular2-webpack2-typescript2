@@ -3,11 +3,12 @@ import { BrowserModule  }                       from '@angular/platform-browser'
 
 // Application modules
 import { SharedModule }                         from './shared/shared.module';
-import { ExamplesModule }                       from './examples/examples.module';
+import { StoreModule }                          from './store/store.module';
 
 // App level component
 import { AppComponent }                         from './app.component';
 import { StartComponent }                       from './start.component';
+import { ReduxComponent }                       from './reduxtest/redux.component';
 
 // Top level routing
 import { routing, routingProviders }            from './app.routes';
@@ -18,13 +19,14 @@ import { routing, routingProviders }            from './app.routes';
      imports: [
         BrowserModule,
         SharedModule.forRoot(),
-        ExamplesModule.forRoot(),
+        StoreModule.forRoot(),
         routing
     ],
 
     declarations: [
         AppComponent,
-        StartComponent
+        StartComponent,
+        ReduxComponent
     ],
 
      providers: [
