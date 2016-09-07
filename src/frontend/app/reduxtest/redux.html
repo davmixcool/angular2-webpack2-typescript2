@@ -1,0 +1,13 @@
+<h1>Redux Test Component</h1>
+
+<md-card>
+ 
+    <md-card-title>Test Counter: {{ counter$ | async }}</md-card-title>
+  
+    <md-card-content>
+         <button  md-raised-button color="primary"   (click)="increment()">Increment</button>
+         <button  md-raised-button color="primary"   (click)="decrement()">Decrement</button>
+         <button  md-raised-button color="secondary" (click)="randomize()">Randomize</button>
+    </md-card-content>
+      
+ </md-card>
